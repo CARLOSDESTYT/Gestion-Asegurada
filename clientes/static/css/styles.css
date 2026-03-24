@@ -1,0 +1,623 @@
+/*CUSTOM*/
+:root{
+    --blanco: #ffffff;
+    --negro: #000000;
+    --gris: #e1e1e1;
+    --morado: #aa02e8;
+    --azul: #62d3ff;
+    --azulhover: #98e2ff;
+    --azul2: #006992;
+    --azul3: rgb(105, 155, 175);
+}
+
+html{
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+*,*:before,*:after{
+    box-sizing: inherit;
+}
+body{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 1.6rem;
+    line-height: 2;
+}
+
+/*GLOBALES*/
+.contenedor{
+    max-width: 120rem;
+    width: 90%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+a{
+    text-decoration: none;
+}
+h1,h2,h3,h4{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    line-height: 1.2;
+}
+h1{
+    font-size: 4.8rem;
+}
+h2{
+    font-size: 4rem;
+}
+h3{
+    font-size: 3.2rem;
+}
+h4{
+    font-size: 2.8rem;
+}
+img{
+    max-width: 100%;
+}
+/*UTILIDADES*/
+.no-margin{
+    margin: 0;
+}
+.no-padding{
+    padding: 0;
+}
+.centrar-texto{
+    text-align: center;
+}
+/*HEADER
+/*
+.webp .header{
+    background-image: url(../img/banner.webp);
+}
+.no-webp .header{
+    background-image: url('../img/bannerr1.jpg');
+}*/
+/*BARRA DE NAVEGACION*/
+.header {
+
+    background-color: var(--blanco);
+
+    height: auto;
+
+    /* SOMBRA ESTILO UDEMY: sutil pero con profundidad */
+
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.08);
+
+    /* Asegura que la sombra se vea por encima de otros elementos */
+
+    position: relative;
+
+    z-index: 10;
+
+}
+.barra{
+    padding: 1.5rem 0;
+}
+@media (min-width: 768px){
+    .barra{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+.logo {
+    color: var(--negro);
+    padding: 0;
+}
+.logo_nombre {
+    font-weight: 400;
+    font-size: 2rem; /* Ajustamos el tamaño para que no sea tan gigante */
+    margin: 0; /* Eliminamos márgenes por defecto del h2 */
+}
+.logo_bold{
+    font-weight: 700;
+    color: var(--azul2);
+}
+@media (min-width: 768px){
+    .navegacion{
+        display: flex;
+        gap: 3rem;
+        align-items: center;
+    }
+}
+.navegacion_enlace{
+    display: block;
+    text-align: center;
+    font-size: 1.4rem;
+    color: var(--negro);
+    
+}
+/* Estilos base para los botones de la navegación */
+.nav_boton {
+    padding: 0.6rem 2rem; /* Reduje un poco el padding vertical */
+    border-radius: 1rem;
+    font-weight: 700;
+    font-size: 1.4rem; /* AGREGAMOS ESTO para que iguale a Sobre Nosotros */
+    transition: all .3s ease;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none; /* Por si acaso quita el subrayado */
+}
+/* Botón Iniciar Sesión (Outline) */
+.nav_boton--login {
+    border: 2px solid var(--azul);
+    color: var(--azul);
+    background-color: transparent;
+}
+
+.nav_boton--login:hover {
+    background-color: rgba(170, 2, 232, 0.1); 
+    color: var(--azul);
+}
+/* Botón Regístrate (Sólido) */
+.nav_boton--signup {
+    background-color: var(--azul);
+    color: var(--blanco);
+    border: 2px solid var(--azul);
+}
+
+.nav_boton--signup:hover {
+    background-color: var(--azulhover); /* El morado claro que pediste */
+    border-color: var(--azulhover);
+    color: var(--blanco);
+}
+/* ================= BANNER HOME ================= */
+.banner {
+    /* Gradiente sutil y tu imagen de fondo */
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.384), rgba(0, 0, 0, 0.452)), url('../img/banner2.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 40rem; 
+    
+    /* FLEXBOX - Esto centra el cuadro blanco */
+    display: flex;
+    align-items: center;    /* Centrado Vertical */
+    justify-content: center; /* ESTA ES LA LÍNEA MÁGICA: Centrado Horizontal */
+    
+    margin-bottom: 4rem; /* Espacio con lo de abajo */
+    width: 100%; /* Asegura que ocupe todo el ancho */
+}
+
+/* La tarjeta blanca (Ahora centrada) */
+.banner_card {
+    background-color: var(--blanco);
+    padding: 3rem 4rem;
+    max-width: 48rem; /* Ancho máximo para que no se vea gigante */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    
+    /* LIMPIEZA: Quitamos el margin-left: 5% para que no empuje el cuadro hacia la derecha */
+    margin: 0; 
+}
+
+/* Textos dentro de la tarjeta */
+.banner_card h1 {
+    font-size: 3.2rem;
+    margin: 0 0 1rem 0;
+    color: var(--negro);
+    line-height: 1.2;
+    text-align: center; /* OPCIONAL: Centra también el texto dentro de la tarjeta */
+}
+
+.banner_card p {
+    font-size: 1.6rem;
+    line-height: 1.4;
+    margin: 0;
+    color: var(--negro);
+    text-align: center; /* OPCIONAL: Centra también el texto dentro de la tarjeta */
+}
+/* Responsive para el Banner */
+@media (max-width: 768px) {
+    .banner {
+        height: 30rem;
+    }
+    .banner_card {
+        margin: 0 auto; /* Se centra en móviles */
+        width: 90%;
+        padding: 2rem;
+    }
+}
+/*contenido principal*/
+@media (min-width: 768px){
+    .contenido-principal{
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        column-gap: 4rem;
+    }
+}
+.entrada{
+    border-bottom: 1px solid var(--gris);
+    margin-bottom: 2rem;
+}
+
+.entrada:last-of-type{
+    border: none;
+    margin-bottom: 0;
+}
+.boton{
+    display: block;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: var(--blanco);
+    text-align: center;
+    padding: 1rem 3rem;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 2rem;
+}
+@media (min-width: 768px){
+    .boton{
+        display: inline-block;
+    }
+}
+.boton:hover{
+    cursor: pointer;
+}
+.boton--primario{
+    background-color: var(--negro);
+}
+.boton--secundario{
+    background-color: var(--azul);
+}
+.cursos{
+    list-style: none;
+}
+.widget-curso{
+    border-bottom: 1px solid var(--gris);
+    margin-bottom: 2rem;
+}
+.widget-curso:last-of-type{
+    border:none;
+    margin-bottom: 0;
+}
+.widget-curso_label{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bold;
+}
+.widget-curso_info{
+    font-weight: normal;
+}
+.widget-curso_label,
+.widget-curso_info{
+    font-size: 2rem;
+}
+
+/*CURSOS*/
+.curso{
+    padding: 3rem 0;
+    border-bottom: 1px solid var(--gris);
+}
+@media (min-width: 768px){
+    .curso{
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        column-gap: 2rem;
+    }
+}
+.curso:last-of-type{
+    border: none;
+}
+.curso_label{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bold;
+}
+.curso_info{
+    font-weight: normal;
+}
+.curso_label,
+.curso_info{
+    font-size: 2rem;
+}
+/* DISEÑO PARA SIGNUP */
+.container_signup {
+    min-height: 80vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem 0;
+    grid-column: 1 / -1;
+}
+
+.card {
+    border-radius: 10px;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 400px;
+    background-color: var(--blanco);
+    padding: 2rem 3rem;
+}
+
+.card_title {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.card_title h1 {
+    font-size: 2.6rem;
+    color: var(--negro);
+    margin-bottom: 1rem;
+}
+
+.form_signup input {
+    margin: 1rem 0;
+    width: 100%;
+    background-color: #f2f2f2;
+    border: 1px solid var(--gris);
+    outline: none;
+    padding: 1.2rem 2rem;
+    border-radius: 4px;
+}
+
+.boton_signup {
+    background-color: var(--azul);
+    color: var(--blanco);
+    font-size: 1.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 5px;
+    padding: 1.2rem;
+    width: 100%;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: background-color .3s ease;
+}
+
+.boton_signup:hover {
+    background-color: var(--azulhover);
+}
+
+.card_terms {
+    display: flex;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.card_terms span {
+    margin-left: 1rem;
+    font-size: 1.3rem;
+}
+/* Añade esto a tu styles.css si quieres centrar el enlace de abajo */
+.card_terms a {
+    color: var(--azul);
+    font-weight: 700;
+}
+
+.card_terms a:hover {
+    text-decoration: underline;
+}
+/* ================= PÁGINA SOBRE NOSOTROS (FINAL DEFINITIVO) ================= */
+.sobre-nosotros {
+    padding: 8rem 0;
+}
+
+/* 1. Encabezado arriba y centrado (100% ancho) */
+.encabezado-nosotros {
+    text-align: center;
+    margin-bottom: 8rem; /* Espacio amplio antes de las columnas */
+}
+
+.encabezado-nosotros h1 {
+    font-size: 3.5rem;
+    color: var(--negro);
+    margin-bottom: 2.5rem;
+    font-family: var(--fuentePrincipal); /* Usa la fuente elegante que definiste */
+}
+
+.encabezado-nosotros p {
+    font-size: 2rem;
+    color: #444;
+    max-width: 55rem; /* Evita que el texto se estire demasiado a los lados */
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* 2. Grid de 2 Columnas (Imagen y Texto) */
+@media (min-width: 768px) {
+    .grid-nosotros {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* 50% y 50% */
+        align-items: center; /* Alineación vertical perfecta */
+    }
+}
+
+/* 3. Columna Izquierda (Imagen) */
+.nosotros_imagen img {
+    width: 80%;
+    border-radius: 2rem;
+    box-shadow: 0 15px 45px rgba(0,0,0,0.1);
+}
+
+/* 4. Columna Derecha (Texto) */
+.nosotros_texto h2 {
+    font-size: 3rem;
+    color: var(--azul2);
+    margin-bottom: 2rem;
+}
+
+.nosotros_texto h3 {
+    color: var(--azul2);
+    margin-top: 4rem;
+}
+
+.nosotros_texto p {
+    font-size: 1.5rem;
+    line-height: 2; /* Mayor interlineado para legibilidad */
+    color: #333;
+}
+/* ================= CONTACTO REDES SOCIALES ================= */
+
+.contacto_redes {
+    width: 100%;
+    text-align: center; /* Centra el título "Conecta con Nosotros" */
+    margin-bottom: 4rem;
+}
+
+.redes_iconos {
+    display: flex;
+    justify-content: center; /* ESTA ES LA CLAVE: Centra los enlaces horizontalmente */
+    gap: 3rem; /* Espacio entre Facebook, Instagram y TikTok */
+    margin-top: 2rem;
+}
+
+.red_enlace {
+    font-size: 1.8rem;
+    color: blue; /* O el color que prefieras de tus variables */
+    font-weight: 700;
+    transition: transform 0.3s ease;
+}
+
+.red_enlace:hover {
+    transform: translateY(-3px); /* Un pequeño efecto al pasar el mouse */
+    color: var(--azul2);
+}
+/* ================= AJUSTES FORMULARIO CONTACTO (CORREGIDO Y CENTRADO) ================= */
+
+/* 1. Centrado de la página y contenedores */
+.contacto-pagina {
+    padding: 6rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra todo el contenido verticalmente */
+}
+
+.contacto_formulario {
+    display: flex;
+    justify-content: center; /* Centra la tarjeta horizontalmente */
+    width: 100%;
+    padding: 2rem;
+}
+
+.card--contacto {
+    margin: 0 auto; 
+    max-width: 45rem; /* Ancho ideal para que no se vea estirado */
+    width: 100%; 
+    padding: 3rem;
+}
+
+/* 2. Estilos de los campos */
+.form_contacto .campo_grupo {
+    margin-bottom: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.form_contacto label {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--negro);
+    text-align: left;
+}
+
+/* 3. Lógica de Asteriscos */
+.form_contacto label::after {
+    content: " *";
+    color: var(--morado); /* Color de la imagen de referencia */
+}
+
+/* Quitar asterisco específicamente al teléfono */
+.form_contacto label[for="telefono"]::after {
+    content: "";
+}
+
+/* 4. Inputs y Textarea */
+.form_contacto input, 
+.form_contacto textarea {
+    width: 100%;
+    background-color: var(--blanco); 
+    border: 1px solid var(--gris);
+    border-radius: 6px;
+    padding: 1.5rem;
+    font-size: 1.5rem;
+    transition: all .3s ease;
+    outline: none;
+}
+
+/* Efecto de enfoque morado */
+.form_contacto input:focus, 
+.form_contacto textarea:focus {
+    border-color: var(--morado);
+    box-shadow: 0 0 5px rgba(170, 2, 232, 0.2);
+}
+
+.campo_field--textarea {
+    min-height: 18rem;
+    resize: none;
+}
+
+/* 5. Utilidades y Aviso */
+::placeholder {
+    color: #bbb;
+}
+
+.obligatorio {
+    color: var(--morado);
+    font-weight: bold;
+}
+
+.aviso {
+    font-size: 13px;  
+    color: #0e0e0e;
+    text-align: center; /* Centrado debajo del botón */
+    margin-top: 2rem;
+}
+
+/* Ajuste del botón para que ocupe el ancho de la tarjeta */
+.form_contacto .boton_signup {
+    width: 100%;
+    cursor: pointer;
+}
+
+/*FOOTER*/
+.footer {
+    background-color: var(--azul); /* Color oscuro tipo Udemy */
+    padding: 2.4rem 0;
+    margin-top: 4rem;
+    color: var(--blanco);
+    clear: both; 
+    display: block;
+    width: 100%;
+}
+
+/* Alineación del grupo logo + copyright */
+.footer_logo-group {
+    display: flex;
+    flex-direction: column; /* Por defecto en móvil uno bajo otro */
+    align-items: center;
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .footer_logo-group {
+        flex-direction: row; /* En desktop se ponen de lado */
+        align-items: center;
+    }
+}
+
+/* --- LOGO ESPECÍFICO PARA EL FOOTER --- */
+/* Cambiamos "Gestión" a blanco */
+.footer .logo_nombre {
+    color: var(--negro);
+    font-size: 2rem;
+}
+
+/* Cambiamos "Asegurada" a blanco (sobrescribiendo el azul) */
+.footer .logo_bold {
+    color: var(--azul2);
+}
+
+/* Estilo del Copyright */
+.copyright {
+    font-size: 1.3rem;
+    color: var(--negro);
+}
+
+/* Enlaces de navegación en el footer */
+.footer .navegacion_enlace {
+    color: var(--negro);
+    font-size: 1.4rem;
+}
+
+.footer .navegacion_enlace:hover {
+    text-decoration: underline;
+}

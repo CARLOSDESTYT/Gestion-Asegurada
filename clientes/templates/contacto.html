@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<main class="contacto-pagina">
+    <div class="contacto_redes contenedor">
+        <h2 class="centrar-texto">Conecta con Nosotros</h2>
+        <div class="redes_iconos">
+            <a href="#" class="red_enlace"><i class="fab fa-facebook"></i> Facebook</a>
+            <a href="#" class="red_enlace"><i class="fab fa-instagram"></i> Instagram</a>
+            <a href="#" class="red_enlace"><i class="fab fa-tiktok"></i> TikTok</a>
+        </div>
+    </div>
+
+    <section class="contacto_formulario contenedor">
+        <div class="card card--contacto">
+            <div class="card_title">
+                <h1>Envíanos un Mensaje</h1>
+            </div>
+
+            <form action="" method="POST" class="form_contacto">
+                {% csrf_token %}
+                
+                <div class="campo_grupo">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Escribe tu nombre" required>
+                </div>
+
+                <div class="campo_grupo">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="ejemplo@correo.com" required>
+                </div>
+
+                <div class="campo_grupo">
+                    <label for="telefono">Teléfono</label>
+                    <input type="tel" id="telefono" name="telefono" placeholder="Tu número de contacto">
+                </div>
+
+                <div class="campo_grupo">
+                    <label for="asunto">Asunto</label>
+                    <input type="text" id="asunto" name="asunto" placeholder="Escribe un asunto" required>
+                </div>
+
+                <div class="campo_grupo">
+                    <label for="mensaje">Mensaje</label>
+                    <textarea id="mensaje" name="mensaje" placeholder="Deja aquí tu comentario..." class="campo_field--textarea"></textarea>
+                </div>
+                
+                <button type="submit" class="boton_signup">Enviar Mensaje</button>
+              <p class="aviso">
+    <span class="obligatorio"> * </span>Los campos son obligatorios.
+</p>	
+            </form>
+        </div>
+    </section>
+</main>
+{% endblock %}

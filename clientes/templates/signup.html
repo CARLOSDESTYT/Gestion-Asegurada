@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<style>
+    .password-wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+    .toggle-password {
+        position: absolute;
+        right: 15px;
+        cursor: pointer;
+        color: #666;
+        z-index: 10;
+    }
+    .campo_signup input {
+        padding-right: 45px;
+    }
+</style>
+
+<div class="container_signup"> 
+    <div class="card">
+        <div class="card_title">
+            <h1>Crear Cuenta</h1>
+            <span>¿Ya tienes cuenta? <a href="{% url 'signin' %}">Inicia Sesión</a></span>
+        </div>
+        
+        <div class="form_signup">
+            {% if error %}
+                <p style="color: red; text-align: center; font-size: 1.2rem;">{{ error }}</p>
+            {% endif %}
+
+            <form method="POST" id="signupForm">
+                {% csrf_token %}
+                
+                {% for field in form %}
+                    <div class="campo_signup" style="margin-bottom: 20px;">
+                        <div style="text-align: left; margin-bottom: 2px; font-weight: bold; color: #333;">
+                            {% if field.name == 'username' %} Nombre de usuario
+                            {% elif field.name == 'password1' %} Contraseña
+                            {% elif field.name == 'password2' %} Confirmar contraseña
+                            {% else %} {{ field.label }} {% endif %}
+                        </div>
+
+                        {% if field.name == 'password1' or field.name == 'password2' %}
+                            <div class="password-wrapper">
+                                {{ field }}
+                                <i class="fa-solid fa-eye toggle-password" onclick="toggleVisibility('{{ field.auto_id }}', this)"></i>
+                            </div>
+                        {% else %}
+                            {{ field }}
+                        {% endif %}
+                        
+                        {% if field.help_text %}
+                            <div class="reglas_ayuda" style="font-size: 0.85rem; color: #666; text-align: left; margin: 5px 10px;">
+                                {% if field.name == 'password1' %}
+                                    {{ field.help_text|safe }}
+                                {% endif %}
+                            </div>
+                        {% endif %}
+
+                        {% if field.errors %}
+                            {% for error in field.errors %}
+                                <p style="color: red; font-size: 0.9rem; margin: 5px 10px;">{{ error }}</p>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                {% endfor %}
+                
+                <button type="submit" class="boton_signup">Registrarse</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    // 1. Inyectar Placeholders para que se vea como el Sign-in
+    document.addEventListener("DOMContentLoaded", function() {
+        const userField = document.querySelector('input[name="username"]');
+        const pass1Field = document.querySelector('input[name="password1"]');
+        const pass2Field = document.querySelector('input[name="password2"]');
+
+        if(userField) userField.placeholder = "Nombre de Usuario";
+        if(pass1Field) pass1Field.placeholder = "Contraseña";
+        if(pass2Field) pass2Field.placeholder = "Confirmar Contraseña";
+    });
+
+    // 2. Función para ver/ocultar contraseña
+    function toggleVisibility(id, icon) {
+        const input = document.getElementById(id);
+        if (input.type === "password") {
+            input.type = "text";
+            icon.classList.replace("fa-eye", "fa-eye-slash");
+        } else {
+            input.type = "password";
+            icon.classList.replace("fa-eye-slash", "fa-eye");
+        }
+    }
+
+    // 3. Validación de coincidencia
+    const password = document.querySelector('input[name="password1"]');
+    const confirmPassword = document.querySelector('input[name="password2"]');
+
+    function validatePassword() {
+        if (password && confirmPassword) {
+            if (password.value != confirmPassword.value) {
+                confirmPassword.setCustomValidity("Las contraseñas no coinciden");
+            } else {
+                confirmPassword.setCustomValidity("");
+            }
+        }
+    }
+
+    if (password && confirmPassword) {
+        password.onchange = validatePassword;
+        confirmPassword.onkeyup = validatePassword;
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>{{cliente.nombre}}</h1>
+<p>Fecha de nacimiento: {{cliente.fecha_nacimiento|date:'j/M/Y'}}</p>
+<p>Teléfono: {{cliente.telefono}}</p>
+<p>Correo: {{cliente.correo}}</p>
+<pre>{{cliente.notas}}</pre>
+<ul>
+    {% for poliza in polizas %}
+    <li>
+        <a href="{% url 'editar_poliza' cliente.id poliza.id %}">
+            <h3>N. Póliza: {{poliza.numero_poliza}}</h3>
+            <p>Estatus: {{poliza.estatus}}</p>
+            <p>Tipo de seguro: {{poliza.tipo_seguro}}</p>
+            <p>Fecha de inicio: {{poliza.fecha_inicio}}</p>
+            <p>Fecha de vencimiento: {{poliza.fecha_vencimiento}}</p>
+            <p>Prima total: {{poliza.prima_total}}</p>
+            <p>Forma de pago: {{poliza.forma_pago}}</p>
+            <p>Último pago: 
+                {% if poliza.fecha_ultimo_pago %}
+                    {{ poliza.fecha_ultimo_pago }}
+                {% else %}
+                    <span class="text-muted">Aún no se ha registrado un pago</span>
+                {% endif %}
+            </p>
+            <p>Próxima renovación: {{poliza.proxima_renovacion}}</p>
+            <p>Última renovación: {{poliza.ultima_renovacion}}</p>
+            <p>Estado de pago: 
+                {% if poliza.esta_al_dia %}
+                    <span style="color: white; background-color: green; padding: 5px 10px; border-radius: 15px;">
+                        ✅ AL DÍA
+                    </span>
+                {% else %}
+                    <span style="color: white; background-color: red; padding: 5px 10px; border-radius: 15px;">
+                        ⚠️ PENDIENTE DE PAGO
+                    </span>
+                {% endif %}
+            </p>
+        </a>
+    </li>
+    {% endfor %}
+</ul>
+<button>
+    <li>
+        <a href="{% url 'editar_cliente' cliente.id %}">Editar</a>
+    </li>
+</button>
+<button>
+    <li>
+        <a href="{% url 'añadir_poliza' cliente.id %}">Añadir poliza</a>
+    </li>
+</button>
+{% endblock %}

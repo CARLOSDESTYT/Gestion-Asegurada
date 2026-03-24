@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión Asegurada</title>
+    <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header class="header">
+        <div class="contenedor"> 
+            <div class="barra">
+                <a class="logo" href="{% url 'home' %}">
+                    <h3 class="logo_nombre no-margin">Gestión<span class="logo_bold">Asegurada</span></h3>
+                </a>
+
+                <nav class="navegacion">
+                    <a href="{% url 'nosotros' %}" class="navegacion_enlace">Sobre Nosotros</a>
+                    {% if user.is_authenticated %}
+                        <a href="/clientes" class="navegacion_enlace">Clientes</a>
+                        <a href="/logout" class="nav_boton nav_boton--login">Salir</a>
+                    {% else %}
+                        <a href="{% url 'signup' %}" class="nav_boton nav_boton--signup">Registrarse</a>
+                        <a href="{% url 'signin' %}" class="nav_boton nav_boton--login">Iniciar Sesión</a>
+                    {% endif %}
+                </nav>
+            </div> 
+        </div>
+    </header>
+
+    {% block banner %}{% endblock %}
+
+    <div class="contenedor">
+        {% block content %}{% endblock %}
+    </div>
+
+    <footer class="footer">
+        <div class="contenedor">
+            <div class="barra">
+                <div class="footer_logo-group"> 
+                    <a class="logo" href="{% url 'home' %}">
+                        <h3 class="logo_nombre no-margin">Gestión<span class="logo_bold">Asegurada</span></h3>
+                    </a>
+                    <p class="copyright no-margin">© 2026 Gestión Asegurada</p>
+                </div>
+                <nav class="navegacion">
+                    <a href="{% url 'contacto' %}" class="navegacion_enlace">Contacto</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

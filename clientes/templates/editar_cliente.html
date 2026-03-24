@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{cliente.nombre}}</h1>
+
+{{error}}
+<form method="POST">
+    {% csrf_token %}
+    <p>Nombre completo: {{form.nombre}}</p>
+    <p>Fecha de nacimiento: {{form.fecha_nacimiento}}</p>
+    <p>Teléfono: {{form.telefono}}</p>
+    <p>Correo: {{form.correo}}</p>
+    <p>Notas: {{form.notas}}</p>
+    <button>
+        Guardar
+    </button>
+</form>
+<form action="{% url 'delete_cliente' cliente.id %}" method="POST">
+    {% csrf_token %}
+    <button>
+        Eliminar
+    </button>
+</form>
+{% endblock %}

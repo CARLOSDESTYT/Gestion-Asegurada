@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Agregar poliza</h1>
+{{error}}
+<form action="{% url 'añadir_poliza' cliente.id %}" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit">
+        Agregar
+    </button>
+</form>
+{% endblock %}

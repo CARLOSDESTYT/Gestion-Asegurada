@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block banner %}
+<section class="banner">
+    <div class="contenedor"> 
+        <div class="banner_card"> 
+            <h1>Seguridad y Confianza en cada Póliza</h1>
+            <p>Dashboard profesional de seguros</p>
+        </div>
+    </div> 
+</section>
+{% endblock %}
+
+{% block content %}
+<div class="contenido-principal"> <main class="blog">
+        <h3>Panel Principal</h3>
+        <article class="entrada">
+            <div class="entrada_contenido">
+                <h4 class="no-margin">Lorem Ipsum</h4>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                <a href="#" class="boton boton--primario">Ver Más</a>
+            </div>
+        </article>
+    </main>
+
+<aside class="sidebar">
+    <h3>Accesos Rápidos</h3>
+    <ul class="cursos no-padding">
+        <li class="widget-curso">
+            <h4 class="no-margin">Nueva Póliza</h4>
+            <a href="/clientes/agregar" class="boton boton--secundario">Registrar Ahora</a>
+        </li>
+    </ul>
+</aside>
+</div>
+{% endblock %}
