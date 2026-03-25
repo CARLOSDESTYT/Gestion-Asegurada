@@ -17,15 +17,18 @@
                 </a>
 
                 <nav class="navegacion">
-                    <a href="{% url 'nosotros' %}" class="navegacion_enlace">Sobre Nosotros</a>
-                    {% if user.is_authenticated %}
-                        <a href="/clientes" class="navegacion_enlace">Clientes</a>
-                        <a href="/logout" class="nav_boton nav_boton--login">Salir</a>
-                    {% else %}
-                        <a href="{% url 'signup' %}" class="nav_boton nav_boton--signup">Registrarse</a>
-                        <a href="{% url 'signin' %}" class="nav_boton nav_boton--login">Iniciar Sesión</a>
-                    {% endif %}
-                </nav>
+    <a href="{% url 'nosotros' %}" class="navegacion_enlace">Sobre Nosotros</a>
+    {% if user.is_authenticated %}
+        <a href="{% url 'agregar_cliente' %}" class="navegacion_enlace">Agregar Asegurado</a>
+        <a href="{% url 'dashboard' %}" class="navegacion_enlace">Dashboard</a>
+        
+        <a href="/clientes" class="navegacion_enlace">Clientes</a>
+        <a href="/logout" class="nav_boton nav_boton--login">Salir</a>
+    {% else %}
+        <a href="{% url 'signup' %}" class="nav_boton nav_boton--signup">Registrarse</a>
+        <a href="{% url 'signin' %}" class="nav_boton nav_boton--login">Iniciar Sesión</a>
+    {% endif %}
+</nav>
             </div> 
         </div>
     </header>

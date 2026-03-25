@@ -1,17 +1,49 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Agregar cliente</h1>
+<div class="gestion_container">
+    <div class="gestion_header">
+        <h3>Agregar Nuevo Cliente</h3>
+        <p>Introduce los datos personales del asegurado para darlo de alta en el sistema.</p>
+    </div>
 
-{{error}}
-<form action="/clientes/agregar/" method="POST">
-    {% csrf_token %}
-    <p>Nombre completo: {{form.nombre}}</p>
-    <p>Fecha de nacimiento: {{form.fecha_nacimiento}}</p>
-    <p>Teléfono: {{form.telefono}}</p>
-    <p>Correo: {{form.correo}}</p>
-    <button>
-        Agregar
-    </button>
-</form>
+    {% if error %}
+        <p class="error-message">{{ error }}</p>
+    {% endif %}
+
+    <form action="/clientes/agregar/" method="POST" class="gestion_grid_form">
+        {% csrf_token %}
+        
+        <div class="gestion_seccion">
+            <div class="campo_gestion">
+                <label for="{{ form.nombre.id_for_label }}">Nombre completo</label>
+                {{ form.nombre }}
+            </div>
+
+            <div class="campo_gestion">
+                <label for="{{ form.correo.id_for_label }}">Email</label>
+                {{ form.correo }}
+            </div>
+        </div>
+
+        <div class="gestion_seccion">
+            <div class="campo_gestion">
+                <label for="{{ form.fecha_nacimiento.id_for_label }}">Fecha de nacimiento</label>
+                {{ form.fecha_nacimiento }}
+            </div>
+
+            <div class="campo_gestion">
+                <label for="{{ form.telefono.id_for_label }}">Teléfono</label>
+                {{ form.telefono }}
+            </div>
+        </div>
+
+        <div class="gestion_footer">
+            <button class="nav_boton nav_boton--signup btn_largo">
+                Guardar Cliente
+            </button>
+            <a href="/clientes" class="enlace_cancelar">Cancelar</a>
+        </div>
+    </form>
+</div>
 {% endblock %}

@@ -1,18 +1,47 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Asegurados</h1>
-<ul>
-    {% for cliente in clientes %}
-    <li>
-        <a href="{% url 'cliente_details' cliente.id %}">
-            <h2>{{cliente.nombre}}</h2>
-            <p>{{cliente.fecha_nacimiento|date:'j/M/Y'}}</p>
-            <p>{{cliente.telefono}}</p>
-            <p>{{cliente.correo}}</p>
-        </a>
-    </li>
-    {% endfor %}
-</ul>
+<div class="gestion_container">
+    <div class="gestion_header_flex">
+        <h3>Directorio de Asegurados</h3>
+        <a href="{% url 'agregar_cliente' %}" class="nav_boton nav_boton--signup"> + Agregar Asegurado</a>
+    </div>
 
+    <div class="tabla_contenedor card">
+        <table class="tabla_clientes">
+            <thead>
+                <tr>
+                    <th>Nombre Completo</th>
+                    <th>Fecha de Nac.</th>
+                    <th>Teléfono</th>
+                    <th>Email</th>
+                    <th style="text-align: center;"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cliente in clientes %}
+                <tr>
+                    <td class="col-nombre">
+                        <a href="{% url 'cliente_details' cliente.id %}" class="cliente_nombre_link">
+                            {{ cliente.nombre }}
+                        </a>
+                    </td>
+                    <td>{{ cliente.fecha_nacimiento|date:'d/m/Y' }}</td>
+                    <td>{{ cliente.telefono }}</td>
+                    <td>{{ cliente.correo }}</td>
+                    <td style="text-align: center;">
+                        <a href="{% url 'cliente_details' cliente.id %}" class="btn_detalle">Ver Pólizas</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5" style="text-align: center; padding: 40px; color: #666;">
+                        No hay clientes registrados todavía. ¡Comienza agregando uno!
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
 {% endblock %}

@@ -621,3 +621,387 @@ img{
 .footer .navegacion_enlace:hover {
     text-decoration: underline;
 }
+
+/* AGREGAR CLIENTE */
+/* Contenedor principal de gestión */
+.gestion_container {
+    max-width: 1100px; /* Mucho más ancho que el anterior */
+    margin: 20px auto;
+    padding: 10px;
+}
+
+.gestion_header {
+    border-bottom: 2px solid #e1f5fe; /* Un toque celeste suave */
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+}
+
+/* El Grid que separa en dos columnas */
+.gestion_grid_form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.gestion_seccion {
+    flex: 1; /* Esto hace que las dos secciones midan lo mismo */
+    min-width: 300px;
+}
+
+.campo_gestion {
+    margin-bottom: 20px;
+}
+
+.campo_gestion label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+/* Estilo para los inputs para que se vean modernos */
+.campo_gestion input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.gestion_footer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.btn_largo {
+    max-width: 300px;
+}
+
+.enlace_cancelar {
+    color: #666;
+    text-decoration: none;
+}
+
+/* ==========================================
+   ESTILOS DE GESTIÓN DE CLIENTES (CORREGIDO)
+   ========================================== */
+
+/* 1. Contenedor principal: Ocupa casi todo el ancho de la pantalla */
+.gestion_container {
+    width: 98%;          /* Se expande casi al borde de la ventana */
+    max-width: 1600px;   /* Límite muy amplio para monitores de ingeniería */
+    margin: 40px auto;
+    padding: 20px;
+}
+
+/* Encabezado con el botón de agregar alineado a la derecha */
+.gestion_header_flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+/* 2. Contenedor de la Tabla: Quita restricciones y permite scroll solo si es necesario */
+.tabla_contenedor.card {
+    width: 100%;
+    max-width: none;
+    box-sizing: border-box;
+    padding: 0;
+    border-radius: 12px;
+    overflow: hidden; /* Mantiene las esquinas redondeadas limpias */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05); /* Un toque de profundidad */
+}
+
+/* 3. La Tabla: Forzamos el ancho total */
+.tabla_clientes {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    table-layout: auto; /* Permite que las columnas se adapten al contenido largo */
+}
+
+/* Encabezados de columna */
+.tabla_clientes th {
+    background-color: #f0f9ff; /* Celeste claro acorde a Gestión Asegurada */
+    padding: 15px;
+    color: #0077b6;
+    font-weight: bold;
+    border-bottom: 2px solid #e1f5fe;
+    white-space: nowrap; /* Evita que los títulos se corten */
+}
+
+/* 4. Celdas: EVITA LAS DOS LÍNEAS POR NOMBRE */
+.tabla_clientes td {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    color: #444;
+    /* PROPIEDADES CRÍTICAS PARA UNA SOLA LÍNEA */
+    white-space: nowrap;    /* ¡Obliga al texto a quedarse en una línea! */
+    overflow: hidden;       /* Corta si es excesivo */
+    text-overflow: ellipsis; /* Pone "..." si el nombre es absurdamente largo */
+}
+
+/* Efecto hover profesional al pasar el mouse */
+.tabla_clientes tr:hover {
+    background-color: #f8fdff;
+}
+
+/* Enlaces de los nombres de clientes */
+.cliente_nombre_link {
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.cliente_nombre_link:hover {
+    color: #0077b6;
+    text-decoration: underline;
+}
+
+/* Botón de acción "Ver Pólizas" */
+.btn_detalle {
+    display: inline-block;
+    font-size: 0.85rem;
+    color: #0077b6;
+    text-decoration: none;
+    border: 1px solid #0077b6;
+    padding: 6px 15px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.btn_detalle:hover {
+    background-color: #0077b6;
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(0,119,182,0.2);
+}
+
+/* Centramos los encabezados */
+.tabla_clientes th {
+    background-color: #f0f9ff;
+    padding: 15px;
+    color: #0077b6;
+    font-weight: bold;
+    border-bottom: 2px solid #e1f5fe;
+    white-space: nowrap;
+    text-align: center; /* <--- ESTO centra los títulos */
+}
+
+/* Centramos los datos de las celdas */
+.tabla_clientes td {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    color: #444;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center; /* <--- ESTO centra la información (nombres, fechas, etc.) */
+}
+
+/* Si quieres que el nombre sea el único que se quede alineado a la izquierda 
+   (porque a veces se lee mejor así), añade esta regla extra: */
+.col-nombre {
+    text-align: left !important;
+    padding-left: 25px !important;
+}
+
+/* ==========================================
+   ESTILOS DE DETALLES DE CLIENTE
+   ========================================== */
+
+/* Grupo de botones en el encabezado */
+.acciones_header {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+/* Tarjeta de información personal */
+.info_cliente_card {
+    padding: 25px;
+    margin-bottom: 30px;
+}
+
+.info_grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}
+.info_grid p {
+    margin: 10px 0;      /* Más espacio entre líneas */
+    font-size: 1.25rem;  /* Tamaño más grande y legible */
+    color: #333;         /* Un tono un poco más oscuro para mejor contraste */
+    display: flex;
+    align-items: center;
+    gap: 10px;           /* Separa un poco más los emojis del texto */
+}
+
+/* Si quieres que las etiquetas (Fecha, Teléfono) resalten aún más */
+.info_grid p strong {
+    color: #0077b6;      /* Color azul de tu marca */
+    font-weight: 700;
+}
+/* Sección de notas preformateada */
+.notas_cliente {
+    margin-top: 20px;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+}
+
+.pre_notas {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    font-family: inherit; /* Usa la fuente del sitio */
+    white-space: pre-wrap; /* Mantiene saltos de línea pero ajusta el texto */
+    color: #666;
+}
+
+/* Grid de Pólizas */
+.polizas_grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
+}
+
+/* Tarjeta individual de Póliza */
+.poliza_card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 1px solid #eee;
+}
+
+.poliza_card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.poliza_card_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding: 15px;
+    background-color: #fcfcfc;
+}
+
+.poliza_card_header h3 {
+    margin: 0;
+    color: #0077b6;
+    font-size: 1.2rem;
+}
+
+.poliza_card_body {
+    padding: 20px;
+    flex-grow: 1;
+}
+
+.poliza_card_body p {
+    margin: 0 0 10px 0;
+    color: #555;
+}
+
+.poliza_card_footer {
+    padding: 15px 20px;
+    background-color: #f9f9f9;
+    border-top: 1px solid #eee;
+}
+
+/* Badges de estatus (dinámicos) */
+.badget {
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+}
+
+.badget--activa { background-color: #2ecc71; } /* Verde */
+.badget--vencida { background-color: #e74c3c; } /* Rojo */
+.badget--cancelada { background-color: #95a5a6; } /* Gris */
+
+/* Estados de pago */
+.estado {
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+.estado--ok { color: #27ae60; }
+.estado--pendiente { color: #c0392b; }
+
+/* Estado vacío */
+.empty_state {
+    text-align: center;
+    padding: 40px;
+}
+
+.info_cliente_card h3 {
+    font-size: 1.6rem;   /* Título de sección más imponente */
+    margin-bottom: 20px;
+    border-bottom: 2px solid #f0f9ff;
+    padding-bottom: 10px;
+}
+.pre_notas {
+    font-size: 1.1rem;   /* Un poco más grande que el estándar */
+    line-height: 1.6;    /* Mejor interlineado para leer párrafos largos */
+}
+
+
+/* Ajustes específicos para la edición */
+.campo_gestion textarea {
+    width: 100%;
+    height: 120px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    resize: vertical;
+}
+
+.info_ayuda_edicion {
+    padding: 20px;
+    background-color: #f0f9ff;
+    border-radius: 8px;
+    color: #0077b6;
+    margin-top: 10px;
+}
+
+.divisor_peligro {
+    margin: 40px 0 20px 0;
+    border: 0;
+    border-top: 2px solid #fee2e2;
+}
+
+.seccion_peligro {
+    padding: 20px;
+    border: 1px solid #fecaca;
+    border-radius: 8px;
+    background-color: #fef2f2;
+}
+
+.btn_eliminar_borde {
+    background-color: white;
+    color: #dc2626;
+    border: 2px solid #dc2626;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: all 0.2s;
+}
+
+.btn_eliminar_borde:hover {
+    background-color: #dc2626;
+    color: white;
+}
+
