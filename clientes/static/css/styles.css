@@ -1005,3 +1005,164 @@ img{
     color: white;
 }
 
+/* Estilo del Dashboard */
+.dashboard_stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.stat_card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    border-top: 4px solid #00a8e8;
+}
+
+.stat_card.highlight {
+    border-top: 4px solid #00171f;
+}
+
+.gestion_grid_cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.card_seguro {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card_seguro_header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    font-size: 13px;
+    color: #666;
+}
+
+.btn_card {
+    display: block;
+    text-align: center;
+    background: #f0f8ff;
+    color: #00a8e8;
+    padding: 10px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 15px;
+    transition: 0.3s;
+}
+
+.btn_card:hover {
+    background: #00a8e8;
+    color: white;
+}
+
+/* Tabla simple para el seguimiento */
+.tabla_dashboard {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.tabla_dashboard th, .tabla_dashboard td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+/* ==========================================
+   ESTILOS ESPECÍFICOS DEL DASHBOARD
+   ========================================== */
+
+.subtitulo_header {
+    color: #666;
+    margin-top: 5px;
+}
+
+/* 1. Grid para las estadísticas rápidas (KPIs) */
+.dashboard_stats_grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Tarjetas anchas */
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.stat_card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 30px;
+    border-radius: 12px;
+    background-color: white;
+}
+
+.stat_icon {
+    font-size: 3rem;
+}
+
+.stat_info h4 {
+    margin: 0;
+    color: #777;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.stat_info h2 {
+    margin: 5px 0;
+    font-size: 3.5rem; 
+    color: #00171f;
+}
+
+.stat_info p {
+    margin: 0;
+    color: #00a8e8;
+    font-weight: bold;
+}
+
+/* Resaltado azul para el seguimiento */
+.highlight_blue {
+    border-left: 5px solid #00a8e8;
+}
+
+/* 2. Contenedores de secciones */
+.dashboard_seccion {
+    padding: 25px;
+    background-color: white;
+    border-radius: 12px;
+}
+
+.seccion_header {
+    margin-bottom: 20px;
+    border-bottom: 2px solid #f0f9ff;
+    padding-bottom: 10px;
+}
+
+.seccion_header h3 {
+    color: #00171f;
+    margin: 0;
+}
+
+.dashboard_card_fix {
+    margin: 0;
+    width: 100%;
+}
+
+.mt_30 { margin-top: 30px; }
+.text_center { text-align: center; }
+
+.empty_state_text {
+    width: 100%;
+    text-align: center;
+    padding: 30px;
+    color: #888;
+}

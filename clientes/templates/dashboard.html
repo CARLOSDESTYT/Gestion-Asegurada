@@ -1,39 +1,93 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h3>Asegurados con renovación este mes</h3>
+<div class="gestion_container">
+    <div class="gestion_header_flex">
+        <h1>{{ titulo_dashboard|default:"Dashboard" }}</h1>
+        <p class="subtitulo_header">Resumen de renovaciones y actividad del mes: {% now "F Y" %}</p>
+    </div>
 
-<ul>
-    {% for pagan_mes in pagan_este_mes %}
-        <li>
-            <a href="{% url 'cliente_details' pagan_mes.cliente.id %}">
-                {{ pagan_mes.cliente.nombre }} – 
-                {{ pagan_mes.tipo_seguro }} – 
-                {% now "m" as mes_actual %}
-                {% now "Y" as anio_actual %}
+    <div class="dashboard_stats_grid">
+        <div class="stat_card card shadow">
+            <div class="stat_icon"></div>
+            <div class="stat_info">
+                <h4>Renovaciones</h4>
+                <h2>{{ pagan_este_mes|length }}</h2>
+                <p>Este mes</p>
+            </div>
+        </div>
 
-                {% if pagan_mes.proxima_renovacion and pagan_mes.proxima_renovacion|date:"m" == mes_actual and pagan_mes.proxima_renovacion|date:"Y" == anio_actual %}
-                    {{ pagan_mes.proxima_renovacion }}
-                {% elif pagan_mes.ultima_renovacion and pagan_mes.ultima_renovacion|date:"Y" == anio_actual %}
-                    {{ pagan_mes.ultima_renovacion }}
-                {% else %}
-                {% endif %}
-            </a>
-        </li>
-    {% empty %}
-    {% endfor %}
-    {% for pagan_40_dias in pagan_proximos_40_dias %}
-        <li>
-            <a href="{% url 'cliente_details' pagan_40_dias.cliente.id %}">
-                {{ pagan_40_dias.cliente.nombre }} – 
-                {{ pagan_40_dias.tipo_seguro }} – 
-                {% now "m" as mes_actual %}
-                {{ pagan_40_dias.proxima_renovacion }}
-            </a>
-        </li>
-    {% empty %}
-        <li>No hay más pólizas por renovar en el mes o los próximos 40 días.</li>
-    {% endfor %}
-</ul>
+        <div class="stat_card card shadow highlight_blue">
+            <div class="stat_icon"></div>
+            <div class="stat_info">
+                <h4>Próximos 40 días</h4>
+                <h2>{{ pagan_proximos_40_dias|length }}</h2>
+                <p>Seguimiento</p>
+            </div>
+        </div>
+    </div>
 
+    <div class="dashboard_seccion card shadow">
+        <div class="seccion_header">
+            <h3>Pólizas por renovar este mes ({% now "F" %})</h3>
+        </div>
+        
+        <div class="gestion_grid_form">
+            {% for pagan_mes in pagan_este_mes %}
+            <div class="card poliza_card dashboard_card_fix">
+                <div class="poliza_card_header">
+                    <h3>Cliente: {{ pagan_mes.cliente.nombre }}</h3>
+                    <span class="badget badget--{{ pagan_mes.estatus|lower }}">{{ pagan_mes.estatus }}</span>
+                </div>
+                <div class="poliza_card_body">
+                    <p><strong>Seguro:</strong> {{ pagan_mes.tipo_seguro }}</p>
+                    <p><strong>Vencimiento:</strong> {{ pagan_mes.fecha_vencimiento|date:"d/M/Y" }}</p>
+                </div>
+                <a href="{% url 'cliente_details' pagan_mes.cliente.id %}" class="btn_editar_poliza">
+                    Ver Cliente
+                </a>
+            </div>
+            {% empty %}
+            <div class="empty_state_text">
+                <p>No hay pólizas registradas para renovación este mes.</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="dashboard_seccion card shadow mt_30">
+        <div class="seccion_header">
+            <h3>Seguimiento a 40 días</h3>
+        </div>
+        <div class="tabla_contenedor">
+            <table class="tabla_clientes">
+                <thead>
+                    <tr>
+                        <th>Asegurado</th>
+                        <th>Tipo Seguro</th>
+                        <th>Vencimiento</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for pagan_40_dias in pagan_proximos_40_dias %}
+                    <tr>
+                        <td>{{ pagan_40_dias.cliente.nombre }}</td>
+                        <td>{{ pagan_40_dias.tipo_seguro }}</td>
+                        <td>{{ pagan_40_dias.fecha_vencimiento|date:"d/M/Y" }}</td>
+                        <td>
+                            <a href="{% url 'cliente_details' pagan_40_dias.cliente.id %}" class="btn_detalle">Ver</a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="4" class="text_center">No hay más pólizas en seguimiento.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
 {% endblock %}
