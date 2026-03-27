@@ -8,17 +8,14 @@
     </div>
 
     <div class="dashboard_stats_grid">
-        <div class="stat_card card shadow">
-            <div class="stat_icon"></div>
-            <div class="stat_info">
+        <div class="stat_card shadow"> <div class="stat_info">
                 <h4>Renovaciones</h4>
                 <h2>{{ pagan_este_mes|length }}</h2>
                 <p>Este mes</p>
             </div>
         </div>
 
-        <div class="stat_card card shadow highlight_blue">
-            <div class="stat_icon"></div>
+        <div class="stat_card shadow highlight_blue">
             <div class="stat_info">
                 <h4>Próximos 40 días</h4>
                 <h2>{{ pagan_proximos_40_dias|length }}</h2>
@@ -27,9 +24,9 @@
         </div>
     </div>
 
-    <div class="dashboard_seccion card shadow">
+    <div class=" gestion_container shadow">
         <div class="seccion_header">
-            <h3>Pólizas por renovar este mes ({% now "F" %})</h3>
+            <h3>Pólizas por renovar</h3>
         </div>
         
         <div class="gestion_grid_form">
@@ -43,7 +40,7 @@
                     <p><strong>Seguro:</strong> {{ pagan_mes.tipo_seguro }}</p>
                     <p><strong>Vencimiento:</strong> {{ pagan_mes.fecha_vencimiento|date:"d/M/Y" }}</p>
                 </div>
-                <a href="{% url 'cliente_details' pagan_mes.cliente.id %}" class="btn_editar_poliza">
+                <a href="{% url 'cliente_details' pagan_mes.cliente.id %}" class="nav_boton nav_boton--signup">
                     Ver Cliente
                 </a>
             </div>
@@ -52,40 +49,6 @@
                 <p>No hay pólizas registradas para renovación este mes.</p>
             </div>
             {% endfor %}
-        </div>
-    </div>
-
-    <div class="dashboard_seccion card shadow mt_30">
-        <div class="seccion_header">
-            <h3>Seguimiento a 40 días</h3>
-        </div>
-        <div class="tabla_contenedor">
-            <table class="tabla_clientes">
-                <thead>
-                    <tr>
-                        <th>Asegurado</th>
-                        <th>Tipo Seguro</th>
-                        <th>Vencimiento</th>
-                        <th>Acción</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for pagan_40_dias in pagan_proximos_40_dias %}
-                    <tr>
-                        <td>{{ pagan_40_dias.cliente.nombre }}</td>
-                        <td>{{ pagan_40_dias.tipo_seguro }}</td>
-                        <td>{{ pagan_40_dias.fecha_vencimiento|date:"d/M/Y" }}</td>
-                        <td>
-                            <a href="{% url 'cliente_details' pagan_40_dias.cliente.id %}" class="btn_detalle">Ver</a>
-                        </td>
-                    </tr>
-                    {% empty %}
-                    <tr>
-                        <td colspan="4" class="text_center">No hay más pólizas en seguimiento.</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
         </div>
     </div>
 

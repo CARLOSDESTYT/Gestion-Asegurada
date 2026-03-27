@@ -53,13 +53,7 @@
                         <div class="poliza_card_footer">
                             <p><strong>Renovación:</strong> {{poliza.proxima_renovacion}}</p>
                             
-                            <div class="estado_pago">
-                                {% if poliza.esta_al_dia %}
-                                    <span class="estado estado--ok">AL DÍA</span>
-                                {% else %}
-                                    <span class="estado estado--pendiente">PENDIENTE</span>
-                                {% endif %}
-                            </div>
+                            
                         </div>
 
                         <a href="{% url 'editar_poliza' cliente.id poliza.id %}" class="nav_boton nav_boton--signup btn_icon">

@@ -927,16 +927,11 @@ img{
 }
 
 .badget--activa { background-color: #2ecc71; } /* Verde */
+.badget--pendiente { background-color: #ff7300; } /* Naranja */
 .badget--vencida { background-color: #e74c3c; } /* Rojo */
 .badget--cancelada { background-color: #95a5a6; } /* Gris */
 
-/* Estados de pago */
-.estado {
-    font-size: 0.9rem;
-    font-weight: bold;
-}
-.estado--ok { color: #27ae60; }
-.estado--pendiente { color: #c0392b; }
+
 
 /* Estado vacío */
 .empty_state {
@@ -1134,12 +1129,6 @@ img{
     border-left: 5px solid #00a8e8;
 }
 
-/* 2. Contenedores de secciones */
-.dashboard_seccion {
-    padding: 25px;
-    background-color: white;
-    border-radius: 12px;
-}
 
 .seccion_header {
     margin-bottom: 20px;
