@@ -50,8 +50,8 @@ class Poliza(models.Model):
     
     @property
     def proxima_renovacion(self):
-        if self.estatus == 'Cancelada': # Se agrega esta línea
-            return # Se agrega esta línea
+        if self.estatus == 'Cancelada':
+            return None
 
         hoy = date.today()
         inicio = self.fecha_inicio

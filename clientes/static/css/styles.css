@@ -14,9 +14,11 @@ html{
     box-sizing: border-box;
     font-size: 62.5%;
 }
-*,*:before,*:after{
+
+*, *:before, *:after {
     box-sizing: inherit;
 }
+
 body{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 1.6rem;
@@ -24,11 +26,17 @@ body{
 }
 
 /*GLOBALES*/
-.contenedor{
-    max-width: 120rem;
-    width: 90%;
+.contenedor{ 
+    max-width: 200rem;
+    width: 95%;
     margin: 0 auto;
-    overflow: hidden;
+    overflow: hidden; 
+}
+.gestion_container {
+    max-width: 200rem;
+    width: 100%;
+    margin: 20px auto;
+    padding: 20px;
 }
 a{
     text-decoration: none;
@@ -509,7 +517,7 @@ img{
 /* 3. Lógica de Asteriscos */
 .form_contacto label::after {
     content: " *";
-    color: var(--morado); /* Color de la imagen de referencia */
+    color: var(--azul2); /* Color de la imagen de referencia */
 }
 
 /* Quitar asterisco específicamente al teléfono */
@@ -621,11 +629,6 @@ img{
 
 /* AGREGAR CLIENTE */
 /* Contenedor principal de gestión */
-.gestion_container {
-    max-width: 1100px; /* Mucho más ancho que el anterior */
-    margin: 20px auto;
-    padding: 10px;
-}
 
 .gestion_header {
     border-bottom: 2px solid #e1f5fe; /* Un toque celeste suave */
@@ -686,19 +689,12 @@ img{
    ========================================== */
 
 /* 1. Contenedor principal: Ocupa casi todo el ancho de la pantalla */
-.gestion_container {
-    width: 98%;          /* Se expande casi al borde de la ventana */
-    max-width: 1600px;   /* Límite muy amplio para monitores de ingeniería */
-    margin: 40px auto;
-    padding: 20px;
-}
 
 /* Encabezado con el botón de agregar alineado a la derecha */
 .gestion_header_flex {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 30px;
 }
 
 /* 2. Contenedor de la Tabla: Quita restricciones y permite scroll solo si es necesario */
@@ -868,13 +864,19 @@ img{
     margin-top: 20px;
 }
 
-/* Tarjeta individual de Póliza */
 .poliza_card {
+    background-color: #ffffff;
+    /* Borde azul grueso para que se note */
+    border: 1px solid #00a8e8; 
+    border-radius: 20px; 
+    
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    transition: transform 0.2s, box-shadow 0.2s;
-    border: 1px solid #eee;
+    /* CLAVE: Corta el contenido (header) para que no tape las esquinas curvas */
+    overflow: hidden; 
+    transition: all 0.3s ease;
+    height: 100%;
+    box-shadow: 0 4px 15px rgba(0, 168, 232, 0.15);
 }
 
 .poliza_card:hover {
@@ -883,51 +885,34 @@ img{
 }
 
 .poliza_card_header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #eee;
-    padding: 15px;
-    background-color: #fcfcfc;
+    /* Fondo azul muy claro para diferenciar */
+    background-color: #f0faff; 
+    padding: 1.5rem 2rem;
+    border-bottom: 2px solid #00a8e8;
 }
 
 .poliza_card_header h3 {
     margin: 0;
-    color: #0077b6;
-    font-size: 1.2rem;
+    color: #006992;
+    font-size: 1.8rem;
 }
 
 .poliza_card_body {
-    padding: 20px;
-    flex-grow: 1;
+    padding: 2rem;
 }
 
-.poliza_card_body p {
-    margin: 0 0 10px 0;
-    color: #555;
-}
-
-.poliza_card_footer {
-    padding: 15px 20px;
-    background-color: #f9f9f9;
-    border-top: 1px solid #eee;
-}
-
-/* Badges de estatus (dinámicos) */
-.badget {
-    padding: 4px 12px;
-    border-radius: 15px;
-    font-size: 0.8rem;
-    font-weight: bold;
-    color: white;
+.poliza_card .nav_boton--signup {
+    margin: 0 2rem 2rem 2rem; /* Margen interno para que no toque los bordes */
+    width: auto; /* Se ajusta al contenedor con los márgenes */
+    display: block;
+    font-size: 1.3rem;
     text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
-.badget--activa { background-color: #2ecc71; } /* Verde */
-.badget--pendiente { background-color: #ff7300; } /* Naranja */
-.badget--vencida { background-color: #e74c3c; } /* Rojo */
-.badget--cancelada { background-color: #95a5a6; } /* Gris */
-
+.poliza_card .nav_boton--signup:hover {
+    transform: scale(1.02);
+}
 
 
 /* Estado vacío */
@@ -1007,11 +992,12 @@ img{
 
 .stat_card {
     background: white;
-    padding: 20px;
     border-radius: 12px;
     text-align: center;
     border-top: 4px solid #00a8e8;
+    border-left: 4px solid #00a8e8
 }
+
 
 .stat_card.highlight {
     border-top: 4px solid #00171f;
@@ -1164,6 +1150,7 @@ img{
 .text_center { text-align: center; }
 
 .empty_state_text {
+    grid-column: 1 / -1;
     width: 100%;
     text-align: center;
     padding: 30px;
